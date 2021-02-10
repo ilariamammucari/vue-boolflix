@@ -20,9 +20,7 @@ var app = new Vue({
                 this.films = result.data.results;
                 this.valoreInput = '';
 
-                this.films.forEach((element) => {
-                    element.vote_average = parseInt(element.vote_average * 5 / 10);
-                });
+                this.voto(this.films);
             }).catch((error) => alert('errori'));
 
             axios.get("https://api.themoviedb.org/3/search/tv", {
@@ -35,10 +33,13 @@ var app = new Vue({
                 this.series = result.data.results;
                 this.valoreInput = '';
 
-                this.series.forEach((element) => {
-                    element.vote_average = parseInt(element.vote_average * 5 / 10);
-                });
+                this.voto(this.series);
             }).catch((error) => alert('errori'));
+        },
+        voto(array){
+            array.forEach((element) => {
+                element.vote_average = parseInt(element.vote_average * 5 / 10);
+            });
         }
     }
 });
