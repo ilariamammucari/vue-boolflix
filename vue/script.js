@@ -4,7 +4,9 @@ var app = new Vue({
         valoreInput: '',
         apiKey: '64ea8cbbcce6f7fd105fce2d2c4b9e9a',
         lingua: 'it-IT',
-        films: ''
+        films: '',
+        series: '',
+        baseIndirizzoImg: 'https://image.tmdb.org/t/p/w342'
     },
     methods: {
         ricercaInput(){
@@ -18,7 +20,9 @@ var app = new Vue({
                 this.films = result.data.results;
                 this.valoreInput = '';
 
-                this.voto();
+                this.films.forEach((element) => {
+                    element.vote_average = parseInt(element.vote_average * 5 / 10);
+                });
             }).catch((error) => alert('errori'));
 
             axios.get("https://api.themoviedb.org/3/search/tv", {
@@ -28,16 +32,13 @@ var app = new Vue({
                     language: this.lingua
                 }
             }).then((result) => {
-                this.films.push(result.data.results);
+                this.series = result.data.results;
                 this.valoreInput = '';
 
-                this.voto();
+                this.series.forEach((element) => {
+                    element.vote_average = parseInt(element.vote_average * 5 / 10);
+                });
             }).catch((error) => alert('errori'));
-        },
-        voto(){
-            this.films.forEach((element) => {
-                element.vote_average = parseInt(element.vote_average * 5 / 10);
-            });
         }
     }
 });
