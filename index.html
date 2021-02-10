@@ -29,20 +29,27 @@
 
         <!-- * main -->
         <main class="box-cards"> 
+            <!--! sezione film -->
             <section v-if="films.length" id="films" v-for="film in films" class="card">
                 <img :src="(film.poster_path == null) ? locandinaVuota : baseIndirizzoImg + film.poster_path" :alt="film.title">
                 <h2>{{ film.title }}</h2>
                 <h3>{{ film.original_title }}</h3>
                 <h4>{{ film.original_language }}</h4>
-                <i v-for="(i,index) in 5" :class="(index >= film.vote_average) ? 'stelline-vuote' : ''" class="fas fa-star"></i>
+                <img class="bandiera" :src="'img/' + film.original_language + '_bandiera.png'" alt="bandiera">
+                <h4>Voto: <span><i v-for="(i,index) in 5" :class="(index >= film.vote_average) ? 'stelline-vuote' : ''" class="fas fa-star"></i></span></h4>
             </section>
+            <!-- ! /sezione film -->
+
+            <!-- ! sezione serie tv -->
             <section v-if="series.length" id="series" v-for="serie in series" class="card">
                 <img :src="(serie.poster_path == null) ? locandinaVuota : baseIndirizzoImg + serie.poster_path" :alt="serie.name">
                 <h2>{{ serie.name }}</h2>
                 <h3>{{ serie.original_name }}</h3>
                 <h4>{{ serie.original_language }}</h4>
-                <i v-for="(i,index) in 5" :class="(index >= serie.vote_average) ? 'stelline-vuote' : ''" class="fas fa-star"></i>
+                <img class="bandiera" :src="'img/' + serie.original_language + '_bandiera.png'" alt="bandiera">
+                <h4>Voto: <span><i v-for="(i,index) in 5" :class="(index >= serie.vote_average) ? 'stelline-vuote' : ''" class="fas fa-star"></i></span></h4>
             </section>
+            <!-- ! /sezione serie tv -->
         </main>
         <!-- * /main -->
 
