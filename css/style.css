@@ -8,6 +8,7 @@
 .contenitore {
     width: 100%;
     height: 100vh;
+    font-family: 'Roboto', sans-serif;
 }
 
 .stelline-vuote {
@@ -29,7 +30,10 @@ header {
 }
 
 header h1 {
+    font-family: 'anton', sans-serif;
     font-size: 3rem;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
     text-shadow: 2px 4px 4px black;
     color: red;
 }
