@@ -20,13 +20,23 @@
 
             <!-- ! header dx -->
             <div class="box-input">
-                <input type="text" v-model="valoreInput" placeholder="Titolo..">
-                <i class="fas fa-search"></i>
+                <input @keyup.enter="ricercaInput" type="text" v-model="valoreInput" placeholder="Titolo..">
+                <i @click="ricercaInput" class="fas fa-search"></i>
             </div>
             <!-- ! /header dx -->
-
         </header>
         <!-- * /header -->
+
+        <!-- * main -->
+        <main class="box-cards"> 
+            <section v-if="films.length" v-for="film in films" class="card">
+                <h2>{{ film.title }}</h2>
+                <h3>{{ film.original_title }}</h3>
+                <h4>{{ film.original_language }}</h4>
+                <h5>{{ film.vote_average }}</h5>
+            </section>
+        </main>
+        <!-- * /main -->
 
     </div>
     <script src="vue/script.js"></script>
