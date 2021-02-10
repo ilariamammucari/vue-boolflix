@@ -10,31 +10,27 @@ var app = new Vue({
     },
     methods: {
         ricercaInput(){
-            axios.get("https://api.themoviedb.org/3/search/movie", {
-                params: {
-                    api_key: this.apiKey,
-                    query: this.valoreInput,
-                    language: this.lingua
-                }
-            }).then((result) => {
-                this.films = result.data.results;
-                this.valoreInput = '';
+            // metto i parametri in una costante così non devo ripeterli per ogni chiamata
+            const parametri = {
+                api_key: this.apiKey,
+                query: this.valoreInput,
+                language: this.lingua
+            };
+
+            // metto i .get() delle chiamate nella costante
+            const movieReq = axios.get("https://api.themoviedb.org/3/search/movie", { params: parametri });
+            const serieTvReq = axios.get("https://api.themoviedb.org/3/search/tv", { params: parametri });
+
+            // in questo modo entro nel .then() solo quando entrambe le chiamate sono avvenute così non ho problemi di caricamenti differenti
+            axios.all( [movieReq,serieTvReq] ).then(axios.spread((movie,serieTv) => {
+                this.films = movie.data.results;
+                this.series = serieTv.data.results;
 
                 this.voto(this.films);
-            }).catch((error) => alert('errori'));
-
-            axios.get("https://api.themoviedb.org/3/search/tv", {
-                params: {
-                    api_key: this.apiKey,
-                    query: this.valoreInput,
-                    language: this.lingua
-                }
-            }).then((result) => {
-                this.series = result.data.results;
-                this.valoreInput = '';
-
                 this.voto(this.series);
-            }).catch((error) => alert('errori'));
+
+                this.valoreInput = '';
+            })).catch((error) => alert('errori'));
         },
         voto(array){
             array.forEach((element) => {
