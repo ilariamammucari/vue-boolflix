@@ -6,7 +6,8 @@ var app = new Vue({
         lingua: 'it-IT',
         films: '',
         series: '',
-        baseIndirizzoImg: 'https://image.tmdb.org/t/p/w342'
+        baseIndirizzoImg: 'https://image.tmdb.org/t/p/w342',
+        locandinaVuota: 'img/locandina-vuota.jpg'
     },
     methods: {
         ricercaInput(){

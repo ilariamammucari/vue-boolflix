@@ -30,22 +30,18 @@
         <!-- * main -->
         <main class="box-cards"> 
             <section v-if="films.length" id="films" v-for="film in films" class="card">
-                <img :src="baseIndirizzoImg + film.poster_path" alt="Locandina-mancante">
+                <img :src="(film.poster_path == null) ? locandinaVuota : baseIndirizzoImg + film.poster_path" :alt="film.title">
                 <h2>{{ film.title }}</h2>
                 <h3>{{ film.original_title }}</h3>
                 <h4>{{ film.original_language }}</h4>
-                <h5>{{ film.vote_average }}</h5>
-                <i v-for="i in film.vote_average" class="fas fa-star"></i>
-                <i v-for="i in 5 - film.vote_average" class="far fa-star"></i>
+                <i v-for="(i,index) in 5" :class="(index >= film.vote_average) ? 'stelline-vuote' : ''" class="fas fa-star"></i>
             </section>
             <section v-if="series.length" id="series" v-for="serie in series" class="card">
-                <img :src="baseIndirizzoImg + serie.poster_path" alt="Locandina-mancante">
+                <img :src="(serie.poster_path == null) ? locandinaVuota : baseIndirizzoImg + serie.poster_path" :alt="serie.name">
                 <h2>{{ serie.name }}</h2>
                 <h3>{{ serie.original_name }}</h3>
                 <h4>{{ serie.original_language }}</h4>
-                <h5>{{ serie.vote_average }}</h5>
-                <i v-for="i in serie.vote_average" class="fas fa-star"></i>
-                <i v-for="i in 5 - serie.vote_average" class="far fa-star"></i>
+                <i v-for="(i,index) in 5" :class="(index >= serie.vote_average) ? 'stelline-vuote' : ''" class="fas fa-star"></i>
             </section>
         </main>
         <!-- * /main -->

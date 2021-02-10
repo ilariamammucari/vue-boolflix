@@ -10,6 +10,10 @@
     height: 100vh;
 }
 
+.stelline-vuote {
+    opacity: 0.3;
+}
+
 /* * header */
 header {
     width: 100%;
@@ -66,4 +70,5 @@ header input {
 .box-cards .card img {
     width: 80%;
     height: 400px;
+    border: 1px solid black;
 }
