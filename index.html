@@ -44,8 +44,8 @@
                 <h3>{{ serie.original_name }}</h3>
                 <h4>{{ serie.original_language }}</h4>
                 <h5>{{ serie.vote_average }}</h5>
-                <i  class="far fa-star"></i>
                 <i v-for="i in serie.vote_average" class="fas fa-star"></i>
+                <i v-for="i in 5 - serie.vote_average" class="far fa-star"></i>
             </section>
         </main>
         <!-- * /main -->
