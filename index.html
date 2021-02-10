@@ -35,6 +35,8 @@
                 <h3>{{ film.original_title }}</h3>
                 <h4>{{ film.original_language }}</h4>
                 <h5>{{ film.vote_average }}</h5>
+                <i v-for="i in film.vote_average" class="fas fa-star"></i>
+                <i v-for="i in 5 - film.vote_average" class="far fa-star"></i>
             </section>
             <section v-if="series.length" id="series" v-for="serie in series" class="card">
                 <img :src="baseIndirizzoImg + serie.poster_path" alt="Locandina-mancante">
@@ -42,6 +44,8 @@
                 <h3>{{ serie.original_name }}</h3>
                 <h4>{{ serie.original_language }}</h4>
                 <h5>{{ serie.vote_average }}</h5>
+                <i  class="far fa-star"></i>
+                <i v-for="i in serie.vote_average" class="fas fa-star"></i>
             </section>
         </main>
         <!-- * /main -->

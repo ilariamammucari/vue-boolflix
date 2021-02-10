@@ -17,18 +17,21 @@ var app = new Vue({
                 language: this.lingua
             };
 
-            // metto i .get() delle chiamate nella costante
+            // metto i .get() delle chiamate in una costante
             const movieReq = axios.get("https://api.themoviedb.org/3/search/movie", { params: parametri });
             const serieTvReq = axios.get("https://api.themoviedb.org/3/search/tv", { params: parametri });
 
             // in questo modo entro nel .then() solo quando entrambe le chiamate sono avvenute così non ho problemi di caricamenti differenti
             axios.all( [movieReq,serieTvReq] ).then(axios.spread((movie,serieTv) => {
+                // popolo array
                 this.films = movie.data.results;
                 this.series = serieTv.data.results;
 
+                // arrotondo i voti
                 this.voto(this.films);
                 this.voto(this.series);
 
+                // svuoto la casella di input
                 this.valoreInput = '';
             })).catch((error) => alert('errori'));
         },
