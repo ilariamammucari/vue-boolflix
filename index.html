@@ -39,6 +39,10 @@
         <!-- * main -->
         <main>
 
+            <div v-if="!films.length || !series.length" class="avatar-iniziale">
+                <img class="img-avatar-iniziale" src="img/avatar.jpg" alt="avatar">
+            </div>
+
             <!--! sezione box card -->
             <section class="box-cards"> 
                 <!--!film -->

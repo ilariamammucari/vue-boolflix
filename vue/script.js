@@ -8,7 +8,7 @@ var app = new Vue({
         series: '',
         baseIndirizzoImg: 'https://image.tmdb.org/t/p/w342',
         locandinaVuota: 'img/locandina-vuota.jpg',
-        tipiContenuti: ['Film','Serie Tv', 'Tutti'],
+        tipiContenuti: ['Film','Serie Tv', 'Tutti']
     },
     methods: {
         ricercaInput(){

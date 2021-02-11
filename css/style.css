@@ -99,6 +99,16 @@ header .box-dx img.avatar {
 }
 
 /* * main */
+.avatar-iniziale img.img-avatar-iniziale {
+    width: 20rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3rem;
+    cursor: pointer;
+}
+
 .box-cards {
     width: 100%;
     margin-top: 6rem;
@@ -110,24 +120,20 @@ header .box-dx img.avatar {
 }
 
 .box-cards .card {
-    width: calc(100% / 4 - 2rem);
+    width: calc(100% / 4 );
     height: 100%;
     padding-left: 2rem;
     margin: 2rem 0;
-    position: relative;
     cursor: pointer;
+    position: relative;
 }
 
 .box-cards .card h2 {
     color: red;
 }
 
-.box-cards .card h5 {
-    padding-bottom: 2rem;
-}
-
 .box-cards .card h4 {
-    padding-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 .box-cards .card:hover img.poster {
@@ -135,7 +141,7 @@ header .box-dx img.avatar {
 }
 
 .box-cards .card:hover .contenuto-card {
-    display: block;
+    display: inline-block;
 }
 
 .box-cards .card img.poster {
@@ -147,8 +153,8 @@ header .box-dx img.avatar {
 .box-cards .card .contenuto-card {
     position: absolute;
     top: 50%;
+    left: 2rem;
     transform: translateY(-50%);
-    left: 2.5rem;
 }
 
 .box-cards .card img.bandiera {
