@@ -7,7 +7,8 @@ var app = new Vue({
         films: '',
         series: '',
         baseIndirizzoImg: 'https://image.tmdb.org/t/p/w342',
-        locandinaVuota: 'img/locandina-vuota.jpg'
+        locandinaVuota: 'img/locandina-vuota.jpg',
+        tipiContenuti: ['Film','Serie Tv', 'Tutti'],
     },
     methods: {
         ricercaInput(){
@@ -40,6 +41,7 @@ var app = new Vue({
     
                     // svuoto la casella di input
                     this.valoreInput = '';
+
                 })).catch((error) => alert('errori'));
             }
         },
@@ -48,8 +50,8 @@ var app = new Vue({
                 element.vote_average = parseInt(element.vote_average * 5 / 10);
             });
         },
-        popolari(arr){
-            arr.sort((elA,elB) => elB.popularity - elA.popularity);
+        popolari(array){
+            array.sort((elA,elB) => elB.popularity - elA.popularity);
         }
     }
 });

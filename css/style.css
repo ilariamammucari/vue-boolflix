@@ -5,46 +5,80 @@
     box-sizing: border-box;
 }
 
+body {
+    background: grey;
+}
+
 .contenitore {
     width: 100%;
-    height: 100vh;
     font-family: 'Roboto', sans-serif;
 }
 
 .stelline-vuote {
-    opacity: 0.3;
+    opacity: 0.5;
+}
+
+.show {
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
 }
 
 /* * header */
 header {
     width: 100%;
-    height: 90px;
-    position: fixed;
-    left: 0;
-    top: 0;
+    height: 6rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.6);
-    padding: 0 50px;
+    padding: 0 5rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 3;
 }
 
-header h1 {
+header .box-sx {
+    display: flex;
+}
+
+header .box-sx h1 {
+    display: inline-block;
+    line-height: 9rem;
     font-family: 'anton', sans-serif;
     font-size: 3rem;
     letter-spacing: 0.5rem;
     text-transform: uppercase;
-    text-shadow: 2px 4px 4px black;
+    text-shadow: 1px 4px 4px black;
     color: red;
 }
 
-header .box-input {
+
+header .box-sx .opzioni {
+    padding-left: 3rem;
+    line-height: 9rem;
+}
+
+header .box-sx .opzioni span {
+    font-size: 1.2rem;
+    padding-left: 2rem;
+    cursor: pointer;
+}
+
+header .box-sx .opzioni span:active {
+    color: red;
+}
+
+header .box-dx {
     position: relative;
 }
 
-header .box-input i {
+header .box-dx i {
     position: absolute;
-    right: 1rem;
+    right: 5rem;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
@@ -57,34 +91,69 @@ header input {
     outline: none;
 }
 
+header .box-dx img.avatar {
+    width: 3rem;
+    margin-left: 1rem;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
 /* * main */
 .box-cards {
     width: 100%;
-    margin-top: 90px;
+    margin-top: 6rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
-    text-align: center;
+    padding: 0 2rem;
 }
 
 .box-cards .card {
-    width: calc(100% / 4 - 20px);
-    padding-left: 20px;
-    margin: 20px 0;
-}
-
-.box-cards .card img {
-    width: 80%;
-    height: 400px;
-    border: 1px solid black;
+    width: calc(100% / 4 - 2rem);
+    height: 100%;
+    padding-left: 2rem;
+    margin: 2rem 0;
+    position: relative;
     cursor: pointer;
 }
 
-.box-cards .card .bandiera {
-    width: 20px;
-    height: 20px;
+.box-cards .card h2 {
+    color: red;
+}
+
+.box-cards .card h5 {
+    padding-bottom: 2rem;
+}
+
+.box-cards .card h4 {
+    padding-top: 1rem;
+}
+
+.box-cards .card:hover img.poster {
+    opacity: 0.3;
+}
+
+.box-cards .card:hover .contenuto-card {
+    display: block;
+}
+
+.box-cards .card img.poster {
+    width: 100%;
+    height: 35rem;
+    border: 1px solid black;
+}
+
+.box-cards .card .contenuto-card {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 2.5rem;
+}
+
+.box-cards .card img.bandiera {
+    width: 1.5rem;
+    height: 1.5rem;
     border: none;
     border-radius: 50%;
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boolflix</title>
+    <title>Pulciflix</title>
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
@@ -18,41 +18,56 @@
         <!--* header -->
         <header>
             <!--! header sx -->
-            <h1>Pulciflix</h1>
+            <div class="box-sx">
+                <h1>Pulciflix</h1>
+                <div class="opzioni">
+                    <span v-for="contenuto in tipiContenuti">{{ contenuto }}</span>
+                </div>
+            </div>
             <!--! /header sx -->
 
             <!-- ! header dx -->
-            <div class="box-input">
+            <div class="box-dx">
                 <input @keyup.enter="ricercaInput" type="text" v-model="valoreInput" placeholder="Titolo..">
                 <i @click="ricercaInput" class="fas fa-search"></i>
+                <img class="avatar" src="img/avatar.jpg" alt="avatar">
             </div>
             <!-- ! /header dx -->
         </header>
         <!-- * /header -->
 
         <!-- * main -->
-        <main class="box-cards"> 
-            <!--! sezione film -->
-            <section v-if="films.length" id="films" v-for="film in films" class="card">
-                <img :src="(film.poster_path == null) ? locandinaVuota : baseIndirizzoImg + film.poster_path" :alt="film.title">
-                <h2>{{ film.title }}</h2>
-                <h3>{{ film.original_title }}</h3>
-                <h4>{{ film.original_language }}</h4>
-                <img class="bandiera" :src="'img/' + film.original_language + '_bandiera.png'" alt="bandiera">
-                <h4>Voto: <span><i v-for="(i,index) in 5" :class="(index >= film.vote_average) ? 'stelline-vuote' : ''" class="fas fa-star"></i></span></h4>
-            </section>
-            <!-- ! /sezione film -->
+        <main>
 
-            <!-- ! sezione serie tv -->
-            <section v-if="series.length" id="series" v-for="serie in series" class="card">
-                <img :src="(serie.poster_path == null) ? locandinaVuota : baseIndirizzoImg + serie.poster_path" :alt="serie.name">
-                <h2>{{ serie.name }}</h2>
-                <h3>{{ serie.original_name }}</h3>
-                <h4>{{ serie.original_language }}</h4>
-                <img class="bandiera" :src="'img/' + serie.original_language + '_bandiera.png'" alt="bandiera">
-                <h4>Voto: <span><i v-for="(i,index) in 5" :class="(index >= serie.vote_average) ? 'stelline-vuote' : ''" class="fas fa-star"></i></span></h4>
+            <!--! sezione box card -->
+            <section class="box-cards"> 
+                <!--!film -->
+                <div v-if="films.length" id="films" v-for="film in films" class="card">
+                    <img class="poster" :src="(film.poster_path == null) ? locandinaVuota : baseIndirizzoImg + film.poster_path" :alt="film.title">
+                    <div class="contenuto-card hidden">
+                        <h2>{{ 'Titolo: ' + film.title }}</h2>
+                        <h5>{{ 'Titolo originale: ' + film.original_title }}</h5>
+                        <h4 v-if="film.overview != ''">{{ 'Trama: ' + film.overview }}</h4>
+                        <h4>Voto: <span><i v-for="(i,index) in 5" :class="(index >= film.vote_average) ? 'stelline-vuote' : ''" class="fas fa-star"></i></span></h4>
+                        <img class="bandiera" :src="'img/' + film.original_language + '_bandiera.png'" alt="bandiera">
+                    </div>
+                </div>
+                <!-- ! /film -->
+
+                <!-- !serie tv -->
+                <div v-if="series.length" id="series" v-for="serie in series" class="card">
+                    <img class="poster" :src="(serie.poster_path == null) ? locandinaVuota : baseIndirizzoImg + serie.poster_path" :alt="serie.name">
+                    <div class="contenuto-card hidden">
+                        <h2>{{ 'Titolo: ' + serie.name }}</h2>
+                        <h5>{{ 'Titolo originale: ' + serie.original_name }}</h5>
+                        <h4 v-if="serie.overview != ''">{{ 'Trama: ' + serie.overview }}</h4>
+                        <h4>Voto: <span><i v-for="(i,index) in 5" :class="(index >= serie.vote_average) ? 'stelline-vuote' : ''" class="fas fa-star"></i></span></h4>
+                        <img class="bandiera" :src="'img/' + serie.original_language + '_bandiera.png'" alt="bandiera">
+                    </div>
+                </div>
+                <!-- ! /serie tv -->
             </section>
-            <!-- ! /sezione serie tv -->
+            <!-- ! /sezione box card -->
         </main>
         <!-- * /main -->
 
