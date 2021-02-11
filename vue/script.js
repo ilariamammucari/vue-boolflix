@@ -8,7 +8,12 @@ var app = new Vue({
         series: '',
         baseIndirizzoImg: 'https://image.tmdb.org/t/p/w342',
         locandinaVuota: 'img/locandina-vuota.jpg',
-        tipiContenuti: ['Film','Serie Tv', 'Tutti']
+        tipiContenuti: ['Film','Serie Tv', 'Tutti'],
+        generi: '',
+        valoreGenere: ''
+    },
+    mounted(){
+        this.popoloGenere();
     },
     methods: {
         ricercaInput(){
@@ -41,7 +46,7 @@ var app = new Vue({
     
                     // svuoto la casella di input
                     this.valoreInput = '';
-
+                    
                 })).catch((error) => alert('errori'));
             }
         },
@@ -56,6 +61,16 @@ var app = new Vue({
         svuotoCampo(){
             this.films = '';
             this.series = '';
+        },
+        popoloGenere(){
+            const parametri = {
+                api_key: this.apiKey,
+                language: 'it-IT'
+            };
+
+            axios.get('https://api.themoviedb.org/3/genre/movie/list',{params: parametri} ).then((result) => {
+                this.generi = result.data.genres;
+            }).catch((error) => console.log('errori'));
         }
     }
 });

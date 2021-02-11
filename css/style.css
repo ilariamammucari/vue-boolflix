@@ -105,6 +105,17 @@ header .box-dx img.avatar {
 }
 
 /* * main */
+main select {
+    text-align: center;
+    border: 1px solid black;    
+    padding: 0.2rem 2rem;
+    outline: none;
+    position: absolute;
+    top: 7rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .avatar-iniziale img.img-avatar-iniziale {
     width: 20rem;
     position: absolute;
@@ -117,7 +128,7 @@ header .box-dx img.avatar {
 
 .box-cards {
     width: 100%;
-    margin-top: 6rem;
+    margin-top: 8rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

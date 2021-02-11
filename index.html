@@ -39,15 +39,25 @@
 
         <!-- * main -->
         <main>
+            <!--! sezione select -->
+            <section v-if="films.length || series.length">
+                <select v-model="valoreGenere">
+                    <option value="">Tutti</option>
+                    <option v-for="genere in generi" :value="genere.id">{{ genere.name }}</option>
+                </select>
+            </section>
+            <!--! /sezione select -->
 
-            <div v-if="!films.length || !series.length" class="avatar-iniziale">
+            <!--! sezione avatar iniziale -->
+            <section v-if="!films.length || !series.length" class="avatar-iniziale">
                 <img class="img-avatar-iniziale" src="img/avatar.jpg" alt="avatar">
-            </div>
+            </section>
+            <!-- ! /sezione avatar iniziale -->
 
             <!--! sezione box card -->
             <section class="box-cards"> 
                 <!--!film -->
-                <div v-if="films.length" id="films" v-for="film in films" class="card">
+                <div v-if="film.genre_ids.includes(valoreGenere) || valoreGenere == ''" id="films" v-for="film in films" class="card">
                     <img class="poster" :src="(film.poster_path == null) ? locandinaVuota : baseIndirizzoImg + film.poster_path" :alt="film.title">
                     <div class="contenuto-card hidden">
                         <h2>{{ 'Titolo: ' + film.title }}</h2>
@@ -60,7 +70,7 @@
                 <!-- ! /film -->
 
                 <!-- !serie tv -->
-                <div v-if="series.length" id="series" v-for="serie in series" class="card">
+                <div v-if="serie.genre_ids.includes(valoreGenere) || valoreGenere == ''" id="series" v-for="serie in series" class="card">
                     <img class="poster" :src="(serie.poster_path == null) ? locandinaVuota : baseIndirizzoImg + serie.poster_path" :alt="serie.name">
                     <div class="contenuto-card hidden">
                         <h2>{{ 'Titolo: ' + serie.name }}</h2>
