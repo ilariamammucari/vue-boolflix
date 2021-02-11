@@ -29,8 +29,9 @@
             <!-- ! header dx -->
             <div class="box-dx">
                 <input @keyup.enter="ricercaInput" type="text" v-model="valoreInput" placeholder="Titolo..">
-                <i @click="ricercaInput" class="fas fa-search"></i>
-                <img class="avatar" src="img/avatar.jpg" alt="avatar">
+                <i @click="ricercaInput" class="fas fa-search cerca"></i>
+                <i class="far fa-bell campanella"></i>
+                <img @click="svuotoCampo" class="avatar" src="img/avatar.jpg" alt="avatar" title="Torna alla Home">
             </div>
             <!-- ! /header dx -->
         </header>

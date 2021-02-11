@@ -52,6 +52,10 @@ var app = new Vue({
         },
         popolari(array){
             array.sort((elA,elB) => elB.popularity - elA.popularity);
+        },
+        svuotoCampo(){
+            this.films = '';
+            this.series = '';
         }
     }
 });

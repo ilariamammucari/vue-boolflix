@@ -68,7 +68,7 @@ header .box-sx .opzioni span {
     cursor: pointer;
 }
 
-header .box-sx .opzioni span:active {
+header .box-sx .opzioni span:hover {
     color: red;
 }
 
@@ -76,9 +76,9 @@ header .box-dx {
     position: relative;
 }
 
-header .box-dx i {
+header .box-dx i.cerca {
     position: absolute;
-    right: 5rem;
+    right: 8rem;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
@@ -90,12 +90,18 @@ header input {
     border-radius: 3rem;
     outline: none;
 }
+header .box-dx i.campanella {
+    font-size: 1.3rem;
+    vertical-align: middle;
+    padding: 0 1.3rem;
+    color: red;
+}
 
 header .box-dx img.avatar {
     width: 3rem;
-    margin-left: 1rem;
     vertical-align: middle;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 /* * main */
