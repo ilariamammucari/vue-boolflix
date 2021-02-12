@@ -147,14 +147,26 @@ main select {
 
 .box-cards .card h2 {
     color: red;
+    font-size: 2rem;
+}
+
+.box-cards .card h5 {
+    padding-bottom: 2rem;
 }
 
 .box-cards .card h4 {
-    margin-top: 0.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.box-cards .card .contenuto-card div{
+    font-size: 1.2rem;
+    max-height: 10.2rem;
+    overflow-y: auto;
 }
 
 .box-cards .card:hover img.poster {
-    opacity: 0.3;
+    opacity: 0.2;
 }
 
 .box-cards .card:hover .contenuto-card {
@@ -170,9 +182,10 @@ main select {
 .box-cards .card .contenuto-card {
     position: absolute;
     top: 50%;
-    left: 2rem;
+    left: 2.3rem;
     transform: translateY(-50%);
 }
+
 
 .box-cards .card img.bandiera {
     width: 1.5rem;
